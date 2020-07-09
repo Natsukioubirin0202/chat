@@ -9,7 +9,13 @@ form.addEventListener('submit', function(event){
   event.preventDefault();
 })
 socketio.on('message',function(msg){
-  const li = document.createElement("li");
-  li.append(msg);
-  chats.append(li);
-});
+    const obj = JSON.parse(msg);
+
+    const dt = document.createElement("dt");
+    const dd = document.createElement("dd");
+    dt.append(obj.name);
+    chats.append(dt);
+    dd.append(obj.msg);
+    chats.append(dd);
+  });
+  
